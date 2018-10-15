@@ -23,8 +23,12 @@
   "homepage": "https://github.com/nsonanh/nem-ipfs#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.16.4",
-    "ipfs-api": "^24.0.2"
+    "fs": "0.0.1-security",
+    "ipfs-api": "^24.0.2",
+    "multer": "^1.4.1",
+    "path": "^0.12.7"
   }
 }

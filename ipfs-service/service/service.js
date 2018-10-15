@@ -9,27 +9,39 @@
 //==============================================================================
 
 // Call packages
-let express         = require('express')                // express
-let service         = express()                         // express
-let bodyParser      = require('body-parser')            // body parser
-let config          = require('./config/config.js');    // config
-let cors            = require('cors')({origin: true});
+const express         = require('express')                // express
+const service         = express()                         // express
+const bodyParser      = require('body-parser')            // body parser
+const config          = require('./config/config.js');    // config
+const cors            = require('cors')({origin: true});
+const cookieParser    = require('cookie-parser');
+const path            = require('path');
 
 // Call routes
-let uploadRoute     = require('./routes/upload.js');
+const uploadRoute     = require('./routes/upload.js');
 
 // Service port
-let port = process.env.PORT || 8080;
+const port = process.env.PORT || 8181;
 
 // Set the bodyParser to parse the urlencoded post data
+service.use(cookieParser());
+service.use(bodyParser.json());
 service.use(bodyParser.urlencoded({ extended: true }));
+service.use(express.static(path.join(__dirname, 'public')));
+
+service.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers',
+   'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 //==============================================================================
 // ROUTES FOR SERVICES
 //==============================================================================
 
 // Get an instance of the express Router
-let router = express.Router();
+const router = express.Router();
 
 // Routes
 // Default route
@@ -48,7 +60,7 @@ service.use(config.routePaths.prefix, router); // Route prefix
 //==============================================================================
 // START THE SERVER
 //==============================================================================
-let server = service.listen(port, () => {
+const server = service.listen(port, () => {
   var host = server.address().address;
   var port = server.address().port;
   console.log("Server listening at http://%s:%s", host, port);
