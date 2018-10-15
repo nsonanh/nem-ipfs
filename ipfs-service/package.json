@@ -1,0 +1,30 @@
+{
+  "name": "ipfs-service",
+  "version": "1.0.0",
+  "description": "Allows encrypting & adding files to IPFS",
+  "main": "service/service.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node service/service.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsonanh/nem-ipfs.git"
+  },
+  "keywords": [
+    "nem",
+    "ipfs"
+  ],
+  "author": "nsonanh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nsonanh/nem-ipfs/issues"
+  },
+  "homepage": "https://github.com/nsonanh/nem-ipfs#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "ipfs-api": "^24.0.2"
+  }
+}
