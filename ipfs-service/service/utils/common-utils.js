@@ -1,21 +1,21 @@
-var config = {};
+//==============================================================================
+// COMMON UTILS
+//==============================================================================
 
 //==============================================================================
-// ROUTE PATHS FOR SERVICE
+// FUNCTIONS TO EXPORT
 //==============================================================================
-config.routePaths = {
-  prefix  : '/ipfs',
-  upload  : '/upload'
+
+function sendResponse(res, code, message, error)
+{
+  return res
+  .status(code)
+  .json({
+       'message': message,
+       'error': error,
+  });
+}
+
+module.exports = {
+  sendResponse: sendResponse
 };
-
-//==============================================================================
-// CONFIG FOR IPFS
-//==============================================================================
-config.ipfs = {
-  MAX_SIZE : 52428800,
-  host: '127.0.0.1',
-  port: 5001,
-  protocol: 'http'
-};
-
-module.exports = config;
